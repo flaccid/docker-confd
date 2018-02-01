@@ -13,8 +13,8 @@ RUN go get ./... && \
 
 FROM alpine:3.7
 
-RUN mkdir -p /etc/confd
-
 COPY --from=builder /go/src/github.com/kelseyhightower/confd/bin/confd /opt/bin/confd
+
+RUN mkdir -p /etc/confd/conf.d /etc/confd/templates
 
 ENTRYPOINT ["/opt/bin/confd"]
